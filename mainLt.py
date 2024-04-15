@@ -97,13 +97,12 @@ class Scrapper:
                         news_title = self.get_web_element_text(title_locator)
                         news_description = self.get_web_element_text(description_locator)
                         news_date = self.get_web_element_text(date_locator)
-                        
+                        image_filename = None
                         if self.driver.does_page_contain_element(locator=image_locator):
                             image = self.driver.get_webelement(locator=f"//ul[@class='search-results-module-results-menu']" "/li" \
                             f"[{item + 1}]//div[@class='promo-media']//img[@class='image']")
                             news_image_src = self.driver.get_element_attribute(image, "src")
                             logging.info("NAME OF SRC", news_image_src)
-                            image_filename = None
                             image_filename = Helpers.get_image_name(news_image_src)
                             logging.info("NAME OF IMAGE", image_filename)
                             # sanitize the image name

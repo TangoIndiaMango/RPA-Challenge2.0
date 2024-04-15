@@ -8,7 +8,7 @@ import time
 import os
 from selenium.common.exceptions import NoSuchElementException
 
-from utils import Utils
+from utils import Helpers
 
 
 class Scrapper:
@@ -88,14 +88,14 @@ class Scrapper:
                         news_date = item.find_element(By.XPATH, date_locator).text
                         news_image_element = item.find_element(By.XPATH, image_locator)
                         news_image_src = news_image_element.get_attribute("src")
-                        image_filename = Utils.get_image_name(news_image_src)
+                        image_filename = Helpers.get_image_name(news_image_src)
                         # sanitize the image name
                         image_filename = os.path.basename(image_filename)
                         if image_filename:
-                            Utils.download_image(news_image_src, image_filename, folder_to_save_images)
+                            Helpers.download_image(news_image_src, image_filename, folder_to_save_images)
                             
-                        searchword_count = Utils.count_occurrence(news_title, news_description, search_phrase)
-                        contains_money = Utils.check_contains_money(news_title, news_description)
+                        searchword_count = Helpers.count_occurrence(news_title, news_description, search_phrase)
+                        contains_money = Helpers.check_contains_money(news_title, news_description)
                         
                         news_data.append([news_date, news_title, news_description, image_filename, searchword_count, contains_money])
                         
