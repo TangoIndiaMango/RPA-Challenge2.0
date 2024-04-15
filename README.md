@@ -47,9 +47,10 @@ Think of [conda.yaml](conda.yaml) as an equivalent of the requirements.txt, but 
 > The full power of [rpaframework](https://robocorp.com/docs/python/rpa-framework) -libraries is also available on Python as a backup while we implement the new Python libraries.
 
 Uploaded the task to RoboCorp Cloud from Github
-![image](https://github.com/TangoIndiaMango/RPA-Challenge2.0/assets/89034378/dbfd5130-0dba-4066-a0b5-fff8a22a5896)
+
+![Task Image](https://github.com/TangoIndiaMango/RPA-Challenge2.0/assets/89034378/dbfd5130-0dba-4066-a0b5-fff8a22a5896)
 
 
 Add the wrok item to the process to run the task
-![image](https://github.com/TangoIndiaMango/RPA-Challenge2.0/assets/89034378/29015a02-e0a4-41c4-9b95-27f65f007824)
+![Work item image](https://github.com/TangoIndiaMango/RPA-Challenge2.0/assets/89034378/29015a02-e0a4-41c4-9b95-27f65f007824)
 
