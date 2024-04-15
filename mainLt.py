@@ -47,7 +47,7 @@ class Scrapper:
             see_all_button = self.driver.get_webelement(locator=see_all_locator)
             self.driver.click_element(locator=see_all_button)
             time.sleep(5)
-            category_button = self.driver.get_webelement   (locator=category_locator)
+            category_button = self.driver.get_webelement(locator=category_locator)
             self.driver.click_element(locator=category_button)
             body = "//div[@class='page-content']/h1[@class='page-title']"
             self.driver.wait_until_element_contains(locator=body, text="Search results for")
