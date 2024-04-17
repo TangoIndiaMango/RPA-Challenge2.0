@@ -32,7 +32,7 @@ def minimal_task():
         raise AssertionError(",".join(errors))
 
     output_folder = Helpers.create_folder(
-        pathlib.Path(__file__).parent.resolve(), "output", "raidinglat"
+        pathlib.Path(__file__).parent.resolve(), "output/raidinglat"
     )
 
     browser = Scrapper()
