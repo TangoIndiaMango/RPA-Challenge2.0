@@ -1,10 +1,11 @@
+import logging
 import shutil
 import requests
 import csv
 from RPA.Robocorp.WorkItems import WorkItems
 import pathlib
 import os
-
+import urllib.parse
 
 class Helpers:
 
@@ -25,6 +26,7 @@ class Helpers:
 
             with open(path_to_saved_image, "wb") as handle:
                 response = requests.get(image_src, stream=True)
+                print(response)
 
                 # Check if response status is OK
                 if not response.ok:
@@ -36,7 +38,8 @@ class Helpers:
                     if not block:
                         break
                     handle.write(block)
-            print(f"Image saved to: {path_to_saved_image}")
+            print(image_src)
+            logging.info(f"Image saved to: {path_to_saved_image}")
         except Exception as e:
             print("Error saving image:", e)
 
@@ -73,7 +76,12 @@ class Helpers:
         else:
             return None
         if split_item is not None:
-            return src.split(split_item)[0].split("/")[-1] + split_item
+            item = src.split(split_item)[0].split("=")[-1] + split_item
+            print(item)
+            print("THIS IS SRC", src)
+            return urllib.parse.unquote_plus(item)
+            
+                
 
     @staticmethod
     def check_contains_money(title, description):

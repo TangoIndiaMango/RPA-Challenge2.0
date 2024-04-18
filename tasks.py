@@ -21,7 +21,7 @@ def minimal_task():
     # in our robocloud we supply matching keys and the values
     search_phrase = input_vars.get("search_phrase", "news")
     category_section = input_vars.get("category", "Books")
-    number_of_news = input_vars.get("number_of_news", 5)
+    number_of_news = input_vars.get("number_of_news", 20)
     errors = []
     if not search_phrase:
         errors.append("Search phrase is empty")
@@ -32,7 +32,7 @@ def minimal_task():
         raise AssertionError(",".join(errors))
 
     output_folder = Helpers.create_folder(
-        pathlib.Path(__file__).parent.resolve(), "output/raidinglat"
+        pathlib.Path(__file__).parent.resolve(), "output"
     )
 
     browser = Scrapper()

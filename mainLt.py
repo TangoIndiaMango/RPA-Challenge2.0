@@ -82,6 +82,9 @@ class Scrapper:
         news_data = []
         try:
             while True:
+                body = "//div[@class='page-content']/h1[@class='page-title']"
+                self.driver.wait_until_element_contains(locator=body, text="Search results for")
+                time.sleep(3)
                 news_items = len(self.driver.get_webelements(locator="//ul[@class='search-results-module-results-menu']" "/li"))
                 for item in range(news_items):
                     try:
@@ -102,14 +105,9 @@ class Scrapper:
                             image = self.driver.get_webelement(locator=f"//ul[@class='search-results-module-results-menu']" "/li" \
                             f"[{item + 1}]//div[@class='promo-media']//img[@class='image']")
                             news_image_src = self.driver.get_element_attribute(image, "src")
-                            logging.info("NAME OF SRC", news_image_src)
-                            image_filename = Helpers.get_image_name(news_image_src)
-                            logging.info("NAME OF IMAGE", image_filename)
-                            # sanitize the image name
-                            image_filename = os.path.basename(image_filename)
-                            logging.info("NAME OF IMAGE AFTER BASEPATH", image_filename)
+                            image_filename = Helpers.get_image_name(news_image_src)    
                             if image_filename:
-                                Helpers.download_image(news_image_src, image_filename, folder_to_save_images)
+                                Helpers.download_image(image_filename, image_filename, folder_to_save_images)
                             
                         searchword_count = Helpers.count_occurrence(news_title, news_description, search_phrase)
                         contains_money = Helpers.check_contains_money(news_title, news_description)
